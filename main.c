@@ -1,34 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
-{
-   int answer = 32;
-   int num;
-   int trial = 0;
-   
-   while (1)
-   {
-         printf("Guess a number: ");
-         scanf("%d",&num);
-         
-         if (num > answer)
-         {
-                 printf("high!\n");
-         }
-         else if (num < answer)
-         {
-              printf("low!\n");
-         }
-         else
-         {
-             printf("congrtulation! trials:%d\n", trial);
-             system("PAUSE");
-             break;
-         }
-         
-         
-         trial++;
-   }	
-  return 0;
+int main() {
+    int num1, num2, result;
+    char operator;
+
+    printf("Enter the calcuation: ");
+    scanf("%d %c %d", &num1, &operator, &num2);
+
+    switch (operator) {
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case '*':
+            result = num1 * num2;
+            break;
+        case '/':
+            if (num2 != 0) {
+                result = num1 / num2;
+            } else {
+                printf("오류: 0으로 나눌 수 없습니다.\n");
+                return 1;
+            }
+            break;
+        default:
+            printf("오류: 잘못된 연산자입니다.\n");
+            return 1; 
+    }
+    printf("result: %d %c %d = %d\n", num1, operator, num2, result);
+    
+    system("pause");
+
+    return 0;
 }
